@@ -70,11 +70,11 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     $displayName = $profile['displayName'];
 
                     //retrieve user data into DB
-                    $psql1 = "UPDATE public.users_info SET userid = '$userId', displayname = '$displayName', timestamp=CURRENT_TIMESTAMP";
-                    //$psql1 = "INSERT INTO public.users_info(userid, displayName, timestamp) VALUES ('$userId','$displayName',CURRENT_TIMESTAMP)";
-                    $ret1 = pg_query($db, $psql);
+                    $psql1 = "INSERT INTO public.users_info(userid, displayName, timestamp) VALUES ('$userId','$displayName',CURRENT_TIMESTAMP)";
+                    $ret1 = pg_query($db, $psql1);
 
-                    $psql2 = "INSERT INTO public.survey_answer(userid, displayName) VALUES ('$userId','$displayName')";
+                    $psql2 = "INSERT INTO public.survey_answers(userid) VALUES ('$userId')";
+                    $ret2 = pg_query($db, $psql2);
 
 
                     if($ret1){
