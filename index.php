@@ -119,17 +119,21 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     }
 
                     else if (strtolower($event['message']['text'])=='su-kun'){
-                        $image = new ImageMessageBuilder('https://image.ibb.co/nofBpq/sukunmid.png', 'https://image.ibb.co/nofBpq/sukunmid.png');
-                        $text1 = new TextMessageBuilder('Su-kun (Survey Kuy LINE) merupakan salah satu layanan yang digunakan untuk melakukan survey');
-                        $text2 = new TextMessageBuilder('Ketik "/list" untuk melihat survey tersedia');
+                        $carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
+                            new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Survey Nama Taman Baru", "Vote untuk nama taman baru!","https://travelyuk.files.wordpress.com/2010/06/butchard.jpg",[
+                            new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('Open Survey 1',"Open Survey 1","Open survey 1"),
+                            ]),
+                            new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Survey Kebersihan Selokan Mataram", "Rate kebersihan Selokan Mataram!","https://s.kaskus.id/images/2015/06/20/7853087_20150620063627.jpg",[
+                            new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Open Survey 2',"http://hilite.me/"),
+                            ]),
+                            ]);
+                        $templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('Carousel Template',$carouselTemplateBuilder);
+                        $text1 = new TextMessageBuilder('Untuk informasi lebih, buka  line://app/1622788685-PMKG0YeB');
                         $text3 = new MultiMessageBuilder();
-                        $text3->add($image);
                         $text3->add($text1);
-                        $text3->add($text2);
-                        //$text3->add($templateMessage);
-                        
+                        $text3->add($templateMessage);
                         $result = $bot->replyMessage($event['replyToken'], $text3);
-                        
+
                         return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                     }
 
