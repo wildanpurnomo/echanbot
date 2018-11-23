@@ -202,7 +202,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                 else if($event['postback']['data'] == '1-1'){
                     $res = $bot->getProfile($event['source']['userId']);
 
-                    if($res->isSucceeded()){
+                    if ($res->isSucceeded()) {
                         $profile = $res->getJSONDecodedBody();
                         $userId = $profile['userId'];
                         $displayName = $profile['displayName'];
@@ -218,6 +218,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                         }
+                    }
                 }
 
                 else if($event['postback']['data'] == '1-2'){
