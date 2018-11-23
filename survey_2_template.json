@@ -1,0 +1,122 @@
+{
+    "type": "bubble",
+    "hero": {
+      "type": "image",
+      "url": "https://s.kaskus.id/images/2015/06/20/7853087_20150620063627.jpg",
+      "size": "full",
+      "aspectRatio": "4:3",
+      "aspectMode": "cover",
+      "action": {
+        "type": "uri",
+        "uri": "http://linecorp.com/"
+      }
+    },
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "Survey Kebersihan Selokan Mataram",
+          "weight": "bold",
+          "align": "center"
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "margin": "lg",
+          "spacing": "sm",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "baseline",
+              "spacing": "sm",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "Menurut Anda, berapa nilai yang cocok untuk menggambarkan tingkat kebersihan selokan mataram? 1 = sangat kurang, 6 = sangat bagus",
+                  "wrap": true,
+                  "color": "#666666",
+                  "size": "sm",
+                  "flex": 1,
+                  "align": "center"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "footer": {
+      "type": "box",
+      "layout": "horizontal",
+      "spacing": "sm",
+      "contents": [
+        {
+          "type": "button",
+          "style": "link",
+          "height": "sm",
+          "action": {
+            "type": "message",
+            "label": "1",
+            "text": "1"
+          }
+        },
+        {
+          "type": "button",
+          "style": "link",
+          "height": "sm",
+          "action": {
+            "type": "message",
+            "label": "2",
+            "text": "2"
+          }
+        },
+        {
+          "type": "button",
+          "style": "link",
+          "height": "sm",
+          "action": {
+            "type": "message",
+            "label": "3",
+            "text": "3"
+          }
+        },
+        {
+          "type": "button",
+          "style": "link",
+          "height": "sm",
+          "action": {
+            "type": "message",
+            "label": "4",
+            "text": "4"
+          }
+        },
+        {
+          "type": "button",
+          "style": "link",
+          "height": "sm",
+          "action": {
+            "type": "message",
+            "label": "5",
+            "text": "5"
+          }
+        },
+        {
+          "type": "button",
+          "style": "link",
+          "height": "sm",
+          "action": {
+            "type": "message",
+            "label": "6",
+            "text": "6"
+          }
+        },
+        {
+          "type": "spacer",
+          "size": "sm"
+        }
+      ],
+      "flex": 0
+    }
+  }

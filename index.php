@@ -193,6 +193,24 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
 
                     return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                 }
+
+                else if(strtolower($event['postback']['data']) == 'open survey 2'){
+                    $flexSurvey2Template = file_get_contents('survey_2_template.json');
+
+                    $result = $httpClient->post(LINEBot::DEFAULT_ENDPOINT_BASE . '/v2/bot/message/reply', [
+                        'replyToken' => $event['replyToken'],
+                        'messages' => [
+                            [
+                                    "type" => "flex",
+                                    "altText" => "Test Flex Message",
+                                    "contents" => json_decode($flexSurvey2Template)
+                            ]
+                    
+                        ],
+                    ]);
+                    return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+
+                }
                 
                 else{
                     $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami ^^");
