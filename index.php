@@ -121,7 +121,19 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     else if (strtolower($event['message']['text'])=='su-kun'){
                         $image = new ImageMessageBuilder('https://image.ibb.co/k39R4q/sasuskun.png', 'https://image.ibb.co/k39R4q/sasuskun.png');
                         $text1 = new TextMessageBuilder('Su-kun (Survey Kuy LINE) merupakan salah satu layanan yang digunakan untuk melakukan survey');
-                        $text2 = new TextMessageBuilder('Survey yang ada saat ini:');
+                        $text2 = new TextMessageBuilder('Ketik "Sukun List" untuk melihat Survey tersedia');
+                        $text3 = new MultiMessageBuilder();
+                        $text3->add($image);
+                        $text3->add($text1);
+                        $text3->add($text2);
+                        //$text3->add($templateMessage);
+                        
+                        $result = $bot->replyMessage($event['replyToken'], $templateMessage);
+                        
+                        return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                    }
+
+                    else if(strtolower($event['message']['text']) == 'su-kun list'){
                         $carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
                             new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("title", "text","https://i0.wp.com/angryanimebitches.com/wp-content/uploads/2013/03/tamakomarket-overallreview-tamakoanddera.jpg",[
                             new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('buka',"http://hilite.me/"),
@@ -131,16 +143,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                             ]),
                             ]);
                         $templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('Carousel Template',$carouselTemplateBuilder);
-                        //$text3 = new MultiMessageBuilder();
-                        // $text3->add($image);
-                        // $text3->add($text1);
-                        // $text3->add($text2);
-                        //$text3->add($templateMessage);
-                        
-                        $result = $bot->replyMessage($event['replyToken'], $templateMessage);
-                        
-                        return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
-                    }
+                    }  
                 }
             }
 
