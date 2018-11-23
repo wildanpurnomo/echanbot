@@ -74,15 +74,15 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     $ret = pg_query($db, $psql);
 
                     if($ret){
-                    //welcoming message
-                    $message1 = "Halo " . $displayName . " ! Selamat datang di E-Chan!\n";
-                    $image = new ImageMessageBuilder("https://image.ibb.co/dEkLFV/sasisu.png","https://image.ibb.co/dEkLFV/sasisu.png");
-                    $message2 = "Aku punya 3 fitur : Sa-kun untuk memberi saran, Su-kun untuk mengisi kuisioner dan Si-kun untuk memberikan informasi menarik";
+                        //welcoming message
+                        $message1 = new TextMessageBuilder("Halo " . $displayName . " ! Selamat datang di E-Chan!\n");
+                        $image = new ImageMessageBuilder("https://image.ibb.co/dEkLFV/sasisu.png","https://image.ibb.co/dEkLFV/sasisu.png");
+                        $message2 = new TextMessageBuilder("Aku punya 3 fitur : Sa-kun untuk memberi saran, Su-kun untuk mengisi kuisioner dan Si-kun untuk memberikan informasi menarik");
 
-                    $welcomingText = new MultiMessageBuilder();
-                    $welcomingText->add($message1);
-                    $welcomingText->add($image);
-                    $welcomingText->add($message2);
+                        $welcomingText = new MultiMessageBuilder();
+                        $welcomingText->add($message1);
+                        $welcomingText->add($image);
+                        $welcomingText->add($message2);
                     }
 
                     else{
@@ -213,7 +213,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     //retrieve user data into DB
                     $psql = "DELETE FROM public.users_info WHERE userid = '$userId'";
                     $ret = pg_query($db, $psql);
-                    }
+                }
             }
         }
     }
