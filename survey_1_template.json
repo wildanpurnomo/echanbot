@@ -57,9 +57,10 @@
         "style": "link",
         "height": "sm",
         "action": {
-          "type": "message",
+          "type": "postback",
           "label": "Taman Jogja Indah",
-          "text": "Taman Jogja Indah"
+          "text": "Taman Jogja Indah",
+          "data": "Taman Jogja Indah"
         }
       },
       {
@@ -67,9 +68,10 @@
         "style": "link",
         "height": "sm",
         "action": {
-          "type": "message",
+          "type": "postback",
           "label": "Taman Indah Jogja",
-          "text": "Taman Indah Jogja"
+          "text": "Taman Indah Jogja",
+          "data": "Taman Indah Jogja"
         }
       },
       {
@@ -77,9 +79,10 @@
         "style": "link",
         "height": "sm",
         "action": {
-          "type": "message",
+          "type": "postback",
           "label": "Jogja Taman Indah",
-          "text": "Jogja Taman Indah"
+          "text": "Jogja Taman Indah",
+          "data": "Jogja Taman Indah"
         }
       },
       {
