@@ -69,7 +69,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
 
                     //retrieve user data into DB
                     $psql = "";
-                    $ret = pg_query($db, $psql);
+                    //$ret = pg_query($db, $psql);
 
                     
                     //welcoming message
@@ -78,9 +78,9 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
             }
 
             else if($event['type'] == 'message'){
-                $repMessage = new TextMessageBuilder($event['message']['text']);
+                $repMessage = new TextMessageBuilder("hai");
 
-                $result = $bot->replyMessage($event['replyToken'], $replyMessage);
+                $result = $bot->replyMessage($event['replyToken'], $repMessage);
 
                 return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
 
