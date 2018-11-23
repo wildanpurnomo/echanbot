@@ -103,7 +103,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     }
 
                     else if (strtolower($event['message']['text'])=='sa-kun'){
-                        $image = new ImageMessageBuilder('https://image.ibb.co/bHvNcA/saskun.png', 'https://image.ibb.co/bHvNcA/saskun.png');
+                        $image = new ImageMessageBuilder('https://image.ibb.co/noFrNA/sakun78.png', 'https://image.ibb.co/noFrNA/sakun78.png');
                         $text1 = new TextMessageBuilder('Sa-kun (Saran Kuy LINE) merupakan salah satu layanan yang digunakan untuk menampung kritik atau saran');
                         $text2 = new TextMessageBuilder('Ingin mengirim kritik atau saran ? Ketik "/sa-kun [saran kamu]" tanpa tanda kutip');
                         $text4 = new TextMessageBuilder('Contoh : /sa-kun Sebaiknya, pembangunan jembatan segera dilakukan mengingat padatnya kendaraan');
