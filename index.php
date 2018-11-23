@@ -80,11 +80,21 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
             else if($event['type'] == 'message'){
 
                 if($event['message']['type'] == 'text'){
-                $repMessage = new TextMessageBuilder("hai");
+                    $command = substr($event['message']['text'], 0, 7);
 
-                $result = $bot->replyMessage($event['replyToken'], $repMessage);
-
-                return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                    if(strtolower($command) == '/sa-kun'){
+                        if(strlen($event['message']['text']) <= 8 ){
+                            $text1 = new TextMessageBuilder('Ingin mengirim kritik atau saran ? Ketik "/sa-kun [saran kamu]" tanpa tanda kutip');
+                            $text2 = new TextMessageBuilder('Contoh : /sa-kun Sebaiknya, pembangunan jembatan segera dilakukan mengingat padatnya kendaraan');
+                            $sakunRepMessage = new MultiMessageBuilder();
+                            $sakunRepMessage->add($text1);
+                            $sakunRepMessage->add($text2);
+                            $result = $bot->replyMessage($event['replyToken'], $text3);
+                        
+                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                        }
+                    }
+                    
                 }
 
 
