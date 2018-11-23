@@ -103,7 +103,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     }
 
                     else if (strtolower($event['message']['text'])=='sa-kun'){
-                        $image = new ImageMessageBuilder('https://image.ibb.co/noFrNA/sakun78.png', 'https://image.ibb.co/noFrNA/sakun78.png');
+                        $image = new ImageMessageBuilder('https://image.ibb.co/csuMpq/sakunmid.png', 'https://image.ibb.co/csuMpq/sakunmid.png');
                         $text1 = new TextMessageBuilder('Sa-kun (Saran Kuy LINE) merupakan salah satu layanan yang digunakan untuk menampung kritik atau saran');
                         $text2 = new TextMessageBuilder('Ingin mengirim kritik atau saran ? Ketik "/sa-kun [saran kamu]" tanpa tanda kutip');
                         $text4 = new TextMessageBuilder('Contoh : /sa-kun Sebaiknya, pembangunan jembatan segera dilakukan mengingat padatnya kendaraan');
@@ -119,7 +119,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     }
 
                     else if (strtolower($event['message']['text'])=='su-kun'){
-                        $image = new ImageMessageBuilder('https://image.ibb.co/k39R4q/sasuskun.png', 'https://image.ibb.co/k39R4q/sasuskun.png');
+                        $image = new ImageMessageBuilder('https://image.ibb.co/nofBpq/sukunmid.png', 'https://image.ibb.co/nofBpq/sukunmid.png');
                         $text1 = new TextMessageBuilder('Su-kun (Survey Kuy LINE) merupakan salah satu layanan yang digunakan untuk melakukan survey');
                         $text2 = new TextMessageBuilder('Ketik "/list" untuk melihat survey tersedia');
                         $text3 = new MultiMessageBuilder();
