@@ -75,14 +75,18 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
 
                     if($ret){
                     //welcoming message
-                    $message = "Halo " . $displayName . " ! Selamat datang di E-Chan!\n";
-                    //$message .= "Silahkan ketik 'Halo' untuk memulai!";
+                    $message1 = "Halo " . $displayName . " ! Selamat datang di E-Chan!\n";
+                    $image = new ImageMessageBuilder("https://image.ibb.co/dEkLFV/sasisu.png","https://image.ibb.co/dEkLFV/sasisu.png");
+                    $message2 = "Aku punya 3 fitur : Sa-kun untuk memberi saran, Su-kun untuk mengisi kuisioner dan Si-kun untuk memberikan informasi menarik";
 
-                    $welcomingText = new TextMessageBuilder($message);
+                    $welcomingText = new MultiMessageBuilder();
+                    $welcomingText->add($message1);
+                    $welcomingText->add($image);
+                    $welcomingText->add($message2);
                     }
 
                     else{
-                        $welcomingText = new TextMessageBuilder("Kapok");
+                        $welcomingText = new TextMessageBuilder("Halo " . $displayName . " ! Selamat datang di E-Chan! Sayangnya database sedang error...");
                     }
 
 
@@ -165,7 +169,8 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $result = $bot->replyMessage($event['replyToken'], $templateMessage);
 
                         return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
-                    }  
+                    }
+                
                 }
             }
 
