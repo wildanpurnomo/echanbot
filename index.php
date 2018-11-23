@@ -222,27 +222,135 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                 }
 
                 else if($event['postback']['data'] == '1-2'){
-                    
+                    $res = $bot->getProfile($event['source']['userId']);
+
+                    if ($res->isSucceeded()) {
+                        $profile = $res->getJSONDecodedBody();
+                        $userId = $profile['userId'];
+                        $displayName = $profile['displayName'];
+                        $answer = $event['postback']['text'];
+    
+                        //retrieve user answer into DB
+                        $psql = "INSERT INTO public.survey_answers(userid, displayname, answersurveyone) VALUES ('$userId','$displayName','$answer')";
+                        $ret = pg_query($db, $psql);
+    
+                        if($ret){
+                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
+                            $result = $bot->replyMessage($event['replyToken'], $repMessage);
+        
+                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                        }
+                    }
                 }
 
                 else if($event['postback']['data'] == '1-3'){
-                    
+                    $res = $bot->getProfile($event['source']['userId']);
+
+                    if ($res->isSucceeded()) {
+                        $profile = $res->getJSONDecodedBody();
+                        $userId = $profile['userId'];
+                        $displayName = $profile['displayName'];
+                        $answer = $event['postback']['text'];
+    
+                        //retrieve user answer into DB
+                        $psql = "INSERT INTO public.survey_answers(userid, displayname, answersurveyone) VALUES ('$userId','$displayName','$answer')";
+                        $ret = pg_query($db, $psql);
+    
+                        if($ret){
+                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
+                            $result = $bot->replyMessage($event['replyToken'], $repMessage);
+        
+                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                        }
+                    }
                 }
 
                 else if($event['postback']['data'] == '2-1'){
-                    
+                    $res = $bot->getProfile($event['source']['userId']);
+
+                    if ($res->isSucceeded()) {
+                        $profile = $res->getJSONDecodedBody();
+                        $userId = $profile['userId'];
+                        $displayName = $profile['displayName'];
+                        $answer = $event['postback']['text'];
+    
+                        //retrieve user answer into DB
+                        $psql = "INSERT INTO public.survey_answers(userid, displayname, answersurveytwo) VALUES ('$userId','$displayName','$answer')";
+                        $ret = pg_query($db, $psql);
+    
+                        if($ret){
+                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
+                            $result = $bot->replyMessage($event['replyToken'], $repMessage);
+        
+                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                        }
+                    }
                 }
 
                 else if($event['postback']['data'] == '2-2'){
-                    
+                    $res = $bot->getProfile($event['source']['userId']);
+
+                    if ($res->isSucceeded()) {
+                        $profile = $res->getJSONDecodedBody();
+                        $userId = $profile['userId'];
+                        $displayName = $profile['displayName'];
+                        $answer = $event['postback']['text'];
+    
+                        //retrieve user answer into DB
+                        $psql = "INSERT INTO public.survey_answers(userid, displayname, answersurveytwo) VALUES ('$userId','$displayName','$answer')";
+                        $ret = pg_query($db, $psql);
+    
+                        if($ret){
+                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
+                            $result = $bot->replyMessage($event['replyToken'], $repMessage);
+        
+                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                        }
+                    }
                 }
 
                 else if($event['postback']['data'] == '2-3'){
-                    
+                    $res = $bot->getProfile($event['source']['userId']);
+
+                    if ($res->isSucceeded()) {
+                        $profile = $res->getJSONDecodedBody();
+                        $userId = $profile['userId'];
+                        $displayName = $profile['displayName'];
+                        $answer = $event['postback']['text'];
+    
+                        //retrieve user answer into DB
+                        $psql = "INSERT INTO public.survey_answers(userid, displayname, answersurveytwo) VALUES ('$userId','$displayName','$answer')";
+                        $ret = pg_query($db, $psql);
+    
+                        if($ret){
+                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
+                            $result = $bot->replyMessage($event['replyToken'], $repMessage);
+        
+                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                        }
+                    }
                 }
 
                 else if($event['postback']['data'] == '2-4'){
-                    
+                    $res = $bot->getProfile($event['source']['userId']);
+
+                    if ($res->isSucceeded()) {
+                        $profile = $res->getJSONDecodedBody();
+                        $userId = $profile['userId'];
+                        $displayName = $profile['displayName'];
+                        $answer = $event['postback']['text'];
+    
+                        //retrieve user answer into DB
+                        $psql = "INSERT INTO public.survey_answers(userid, displayname, answersurveytwo) VALUES ('$userId','$displayName','$answer')";
+                        $ret = pg_query($db, $psql);
+    
+                        if($ret){
+                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
+                            $result = $bot->replyMessage($event['replyToken'], $repMessage);
+        
+                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                        }
+                    }
                 }
                 
                 else{
