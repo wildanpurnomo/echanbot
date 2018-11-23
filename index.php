@@ -208,12 +208,12 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $displayName = $profile['displayName'];
                         $answer = $event['postback']['text'];
     
-                        //retrieve user data into DB
-                        $psql = "INSERT INTO public.survey_answers(userid, displayName, answersurveyone) VALUES ('$userId','$displayName','$answer')";
+                        //retrieve user answer into DB
+                        $psql = "INSERT INTO public.survey_answers(userid, displayname, answersurveyone) VALUES ('$userId','$displayName','$answer')";
                         $ret = pg_query($db, $psql);
     
                         if($ret){
-                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami ^^");
+                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
