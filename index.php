@@ -78,11 +78,15 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
             }
 
             else if($event['type'] == 'message'){
-                $repMessage = new TextMessageBuilder("hai");
 
-                $result = $bot->replyMessage($event['replyToken'], $repMessage);
+                if($event['message']['type'] == 'text'){
+                    $repMessage = new TextMessageBuilder("hai");
 
-                return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                    $result = $bot->replyMessage($event['replyToken'], $repMessage);
+    
+                    return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                }
+
 
             }
 
