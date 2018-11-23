@@ -172,9 +172,20 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
             }
 
             else if($event['type'] == 'postback'){
-                if(strtolower($event['data']) == 'open survey 1'){
-                    $msg = new TextMessageBuilder("line://app/1622788685-PMKG0YeB");
-                    $result = $bot->replyMessage($event['replyToken'], $msg);
+                if(strtolower($event['postback']['data']) == 'open survey 1'){
+                    $flexSurvey1Template = file_get_contents('survey_1_template.json');
+
+                    $result = $httpClient->post(LINEBot::DEFAULT_ENDPOINT_BASE . '/v2/bot/message/reply', [
+                        'replyToken' => $event['replyToken'],
+                        'messages' => [
+                            [
+                                    "type" => "flex",
+                                    "altText" => "Test Flex Message",
+                                    "contents" => json_decode($flexSurvey1Template)
+                            ]
+                    
+                        ],
+                    ]);
 
 
                     return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
