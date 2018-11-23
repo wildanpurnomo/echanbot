@@ -213,7 +213,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $answer = $event['postback']['text'];
     
                         //retrieve user answer into DB
-                        $psql = "INSERT INTO public.survey_answers(userid, displayname, answersurveyone) VALUES ('$userId','$displayName','$answer')";
+                        $psql = "INSERT INTO public.survey_answers(answersurveyone) VALUES ('$answer') WHERE userid = '$userId'";
                         $ret = pg_query($db, $psql);
     
                         if($ret){
