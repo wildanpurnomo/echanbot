@@ -143,6 +143,10 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                             ]),
                             ]);
                         $templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('Carousel Template',$carouselTemplateBuilder);
+                        $result = $bot->replyMessage($event['replyToken'], $templateMessage);
+
+                        return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+
                     }  
                 }
             }
