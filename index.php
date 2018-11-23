@@ -114,6 +114,8 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         }
 
                         else{
+                            $saran = substr($event['message']['text'], 8)
+
                             $textMessageBuilder = new TextMessageBuilder('Terima kasih atas masukan Anda');
                             $result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
                       
@@ -213,7 +215,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $ret = pg_query($db, $psql);
     
                         if($ret){
-                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami" . $answer);
+                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
@@ -228,15 +230,15 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $profile = $res->getJSONDecodedBody();
                         $userId = $profile['userId'];
                         $displayName = $profile['displayName'];
-                        $answer = $event['postback']['text'];
+                        $answer = 'Taman Jogja Indah';
     
                         //retrieve user answer into DB
-                        $psql = "INSERT INTO public.survey_answers(userid, displayname, answersurveyone) VALUES ('$userId','$displayName','$answer')";
+                        $psql = "INSERT INTO public.survey_one_answers(userid,answersurveyone) VALUES ('$userId','$answer')";
                         $ret = pg_query($db, $psql);
     
                         if($ret){
                             $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
-                            $result = $answer;
+                            $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                         }
@@ -250,10 +252,10 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $profile = $res->getJSONDecodedBody();
                         $userId = $profile['userId'];
                         $displayName = $profile['displayName'];
-                        $answer = $event['postback']['text'];
+                        $answer = 'Jogja Taman Indah';
     
                         //retrieve user answer into DB
-                        $psql = "INSERT INTO public.survey_answers(userid, displayname, answersurveyone) VALUES ('$userId','$displayName','$answer')";
+                        $psql = "INSERT INTO public.survey_one_answers(userid,answersurveyone) VALUES ('$userId','$answer')";
                         $ret = pg_query($db, $psql);
     
                         if($ret){
@@ -272,10 +274,10 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $profile = $res->getJSONDecodedBody();
                         $userId = $profile['userId'];
                         $displayName = $profile['displayName'];
-                        $answer = $event['postback']['text'];
+                        $answer = '1';
     
                         //retrieve user answer into DB
-                        $psql = "INSERT INTO public.survey_answers(userid, displayname, answersurveytwo) VALUES ('$userId','$displayName','$answer')";
+                        $psql = "INSERT INTO public.survey_two_answers(userid,answersurveytwo) VALUES ('$userId','$answer')";
                         $ret = pg_query($db, $psql);
     
                         if($ret){
@@ -294,10 +296,10 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $profile = $res->getJSONDecodedBody();
                         $userId = $profile['userId'];
                         $displayName = $profile['displayName'];
-                        $answer = $event['postback']['text'];
+                        $answer = '2';
     
                         //retrieve user answer into DB
-                        $psql = "INSERT INTO public.survey_answers(userid, displayname, answersurveytwo) VALUES ('$userId','$displayName','$answer')";
+                        $psql = "INSERT INTO public.survey_two_answers(userid,answersurveytwo) VALUES ('$userId','$answer')";
                         $ret = pg_query($db, $psql);
     
                         if($ret){
@@ -316,10 +318,10 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $profile = $res->getJSONDecodedBody();
                         $userId = $profile['userId'];
                         $displayName = $profile['displayName'];
-                        $answer = $event['postback']['text'];
+                        $answer = '3';
     
                         //retrieve user answer into DB
-                        $psql = "INSERT INTO public.survey_answers(userid, displayname, answersurveytwo) VALUES ('$userId','$displayName','$answer')";
+                        $psql = "INSERT INTO public.survey_two_answers(userid,answersurveytwo) VALUES ('$userId','$answer')";
                         $ret = pg_query($db, $psql);
     
                         if($ret){
@@ -338,10 +340,10 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $profile = $res->getJSONDecodedBody();
                         $userId = $profile['userId'];
                         $displayName = $profile['displayName'];
-                        $answer = $event['postback']['text'];
+                        $answer = '4';
     
                         //retrieve user answer into DB
-                        $psql = "INSERT INTO public.survey_answers(userid, displayname, answersurveytwo) VALUES ('$userId','$displayName','$answer')";
+                        $psql = "INSERT INTO public.survey_two_answers(userid,answersurveytwo) VALUES ('$userId','$answer')";
                         $ret = pg_query($db, $psql);
     
                         if($ret){
