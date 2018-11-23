@@ -73,11 +73,19 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     $psql = "INSERT INTO public.users_info(userid, displayName, timestamp) VALUES ('$userId','$displayName',CURRENT_TIMESTAMP)";
                     $ret = pg_query($db, $psql);
 
+                    if($ret){
                     //welcoming message
                     $message = "Halo " . $displayName . " ! Selamat datang di E-Chan!\n";
                     //$message .= "Silahkan ketik 'Halo' untuk memulai!";
 
                     $welcomingText = new TextMessageBuilder($message);
+                    }
+
+                    else{
+                        $welcomingText = new TextMessageBuilder("Kapok");
+                    }
+
+
                 }
 
                 $result = $bot->replyMessage($event['replyToken'], $welcomingText);
