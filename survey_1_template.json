@@ -59,7 +59,7 @@
         "action": {
           "type": "message",
           "label": "Taman Jogja Indah",
-          "text": "Terima kasih atas partisipasi anda"
+          "text": "Taman Jogja Indah"
         }
       },
       {
@@ -69,7 +69,7 @@
         "action": {
           "type": "message",
           "label": "Taman Indah Jogja",
-          "text": "Terima kasih atas partisipasi anda"
+          "text": "Taman Indah Jogja"
         }
       },
       {
@@ -79,7 +79,7 @@
         "action": {
           "type": "message",
           "label": "Jogja Taman Indah",
-          "text": "Terima kasih atas partisipasi anda"
+          "text": "Jogja Taman Indah"
         }
       },
       {
