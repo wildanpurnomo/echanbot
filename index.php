@@ -8,8 +8,6 @@ use \LINE\LINEBot\MessageBuilder\MessageBuilder;
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 use \LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
 use \LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
-use \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder;
-new \LINE\LINEBot\TemplateActionBuilder;
 use \LINE\LINEBot\SignatureValidator as SignatureValidator;
 
 //set false for production
