@@ -89,7 +89,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                             $sakunRepMessage = new MultiMessageBuilder();
                             $sakunRepMessage->add($text1);
                             $sakunRepMessage->add($text2);
-                            $result = $bot->replyMessage($event['replyToken'], $text3);
+                            $result = $bot->replyMessage($event['replyToken'], $sakunRepMessage);
                         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                         }
