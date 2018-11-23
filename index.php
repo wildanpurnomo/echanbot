@@ -73,8 +73,14 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
 
                     
                     //welcoming message
-                    $welcomingMessage = "Hai";
+                    $message = "Halo " . $profile['displayName'] . " ! Selamat datang di E-Chan!\n";
+                    $message .= "Silahkan ketik 'Halo' untuk memulai!";
+
+                    $welcomingText = new TextMessageBuilder($message);
                 }
+
+                $result = $bot->replyMessage($event['replyToken'], $welcomingText);
+                return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus()); 
             }
 
             else if($event['type'] == 'message'){
