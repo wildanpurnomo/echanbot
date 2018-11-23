@@ -70,14 +70,10 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     $displayName = $profile['displayName'];
 
                     //retrieve user data into DB
-                    $psql1 = "INSERT INTO public.users_info(userid, displayName, timestamp) VALUES ('$userId','$displayName',CURRENT_TIMESTAMP)";
-                    $ret1 = pg_query($db, $psql1);
+                    $psql = "INSERT INTO public.users_info(userid, displayName, timestamp) VALUES ('$userId','$displayName',CURRENT_TIMESTAMP)";
+                    $ret = pg_query($db, $psql1);
 
-                    $psql2 = "INSERT INTO public.survey_answers(userid) VALUES ('$userId')";
-                    $ret2 = pg_query($db, $psql2);
-
-
-                    if($ret1){
+                    if($ret){
                         //welcoming message
                         $message1 = new TextMessageBuilder("Halo " . $displayName . " ! Selamat datang di E-Chan!\n");
                         $image = new ImageMessageBuilder("https://image.ibb.co/dEkLFV/sasisu.png","https://image.ibb.co/dEkLFV/sasisu.png");
@@ -213,7 +209,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $answer = $event['postback']['text'];
     
                         //retrieve user answer into DB
-                        $psql = "INSERT INTO public.survey_answers(answersurveyone) VALUES ('$answer') WHERE userid = '$userId'";
+                        $psql = "INSERT INTO public.survey_one_answers(userid,answersurveyone) VALUES ('$userId','$answer')";
                         $ret = pg_query($db, $psql);
     
                         if($ret){
