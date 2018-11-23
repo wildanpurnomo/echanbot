@@ -162,7 +162,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     
                         //     ],
                         // ]);
-                        $msg = new TextMessageBuilder("ne://app/1622788685-PMKG0YeB");
+                        $msg = new TextMessageBuilder("line://app/1622788685-PMKG0YeB");
                         $result = $bot->replyMessage($event['replyToken'], $msg);
 
 
