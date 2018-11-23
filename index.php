@@ -52,13 +52,13 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
 
     $data = json_decode($body, true);
     if(is_array($data['events'])){
-        // $host = "host = ec2-54-246-85-234.eu-west-1.compute.amazonaws.com";
-        // $user = "user = iwyxaotzpdcwxp";
-        // $password = "password = 94094cc3d5a2e480287f8f0a11fbc45e03685dae62b0da058f6dd44069be0bb8";
-        // $dbname = "dbname = d320e4j15u7oe9";
-        // $port = "port = 5432";
+        $host = "host = ec2-23-21-201-12.compute-1.amazonaws.com";
+        $user = "user = bqgtvmqhgoocpi";
+        $password = "password = 94094cc3d5a2e480287f8f0a11fbc45e03685dae62b0da058f6dd44069be0bb8";
+        $dbname = "dbname = df4d3civge3daf";
+        $port = "port = 5432";
 
-        // $db = pg_connect("$host $port $dbname $user $password");
+        $db = pg_connect("$host $port $dbname $user $password");
 
         foreach($data['events'] as $event){
             if($event['type'] == 'follow'){
@@ -66,14 +66,15 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
 
                 if($res->isSucceeded()){
                     $profile = $res->getJSONDecodedBody();
+                    $userId = $profile['userId'];
+                    $displayName = $profile['displayName'];
 
                     //retrieve user data into DB
-                    $psql = "";
-                    //$ret = pg_query($db, $psql);
+                    $psql = "INSERT INTO public.users_info(userId, displayName, timestamp) VALUES ('$userId','$displayName',CURRENT_TIMESTAMP)";
+                    $ret = pg_query($db, $psql);
 
-                    
                     //welcoming message
-                    $message = "Halo " . $profile['displayName'] . " ! Selamat datang di E-Chan!\n";
+                    $message = "Halo " . $displayName . " ! Selamat datang di E-Chan!\n";
                     //$message .= "Silahkan ketik 'Halo' untuk memulai!";
 
                     $welcomingText = new TextMessageBuilder($message);
