@@ -93,11 +93,46 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                         }
+
+                        else{
+                            $textMessageBuilder = new TextMessageBuilder('Terima kasih atas masukan Anda');
+                            $result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+                      
+                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                        }
+                    }
+
+                    else if (strtolower($event['message']['text'])=='sa-kun'){
+                        $image = new ImageMessageBuilder('https://image.ibb.co/bHvNcA/saskun.png', 'https://image.ibb.co/bHvNcA/saskun.png');
+                        $text1 = new TextMessageBuilder('Sa-kun (Saran Kuy LINE) merupakan salah satu layanan yang digunakan untuk menampung kritik atau saran');
+                        $text2 = new TextMessageBuilder('Ingin mengirim kritik atau saran ? Ketik "/sa-kun [saran kamu]" tanpa tanda kutip');
+                        $text4 = new TextMessageBuilder('Contoh : /sa-kun Sebaiknya, pembangunan jembatan segera dilakukan mengingat padatnya kendaraan');
+                        $text3 = new MultiMessageBuilder();
+                        $text3->add($image);
+                        $text3->add($text1);
+                        $text3->add($text2);
+                        $text3->add($text4);
+                        
+                        $result = $bot->replyMessage($event['replyToken'], $text3);
+                        
+                        return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                    }
+
+                    else if (strtolower($event['message']['text'])=='su-kun'){
+                        $image = new ImageMessageBuilder('https://image.ibb.co/k39R4q/sasuskun.png', 'https://image.ibb.co/k39R4q/sasuskun.png');
+                        $text1 = new TextMessageBuilder('Su-kun (Survey Kuy LINE) merupakan salah satu layanan yang digunakan untuk melakukan survey');
+                        $text2 = new TextMessageBuilder('Survey yang ada saat ini:');
+                        $text3 = new MultiMessageBuilder();
+                        $text3->add($image);
+                        $text3->add($text1);
+                        $text3->add($text2);
+                        
+                        $result = $bot->replyMessage($event['replyToken'], $text3);
+                        
+                        return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                     }
                     
                 }
-
-
             }
 
             else if($event['type'] == 'unfollow'){
