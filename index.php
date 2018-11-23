@@ -74,7 +74,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     
                     //welcoming message
                     $message = "Halo " . $profile['displayName'] . " ! Selamat datang di E-Chan!\n";
-                    $message .= "Silahkan ketik 'Halo' untuk memulai!";
+                    //$message .= "Silahkan ketik 'Halo' untuk memulai!";
 
                     $welcomingText = new TextMessageBuilder($message);
                 }
