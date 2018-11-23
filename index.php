@@ -147,6 +147,24 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
 
                         return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                     }  
+
+                    else if(strtolower($event['message']['text']) == 'open survey 1'){
+                        $flexSurvey1Template = file_get_contents('survey_1_template.json');
+
+                        $result = $httpClient->post(LINEBot::DEFAULT_ENDPOINT_BASE . '/v2/bot/message/reply', [
+                            'replyToken' => $event['replyToken'],
+                            'messages' => [
+                                [
+                                    "type" => "flex",
+                                    "altText" => "Test Flex Message Survey 1",
+                                    "contents" => json_decode($flexSurvey1Template)
+                                ]
+                    
+                            ],
+                        ]);
+
+                        return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                    }  
                 }
             }
 
