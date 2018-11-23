@@ -138,6 +138,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     }
 
                     else if (strtolower($event['message']['text'])=='su-kun'){
+
                         $carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
                             new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Survey Nama Taman Baru", "Vote untuk nama taman baru!","https://travelyuk.files.wordpress.com/2010/06/butchard.jpg",[
                             new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('Open Survey 1',"Open Survey 1","Open Survey 1"),
@@ -146,6 +147,8 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                             new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('Open Survey 2',"Open Survey 2","Open Survey 2"),
                             ]),
                             ]);
+
+
                         $templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('Carousel Template',$carouselTemplateBuilder);
                         $text1 = new TextMessageBuilder('Untuk informasi lebih, buka  line://app/1622788685-PMKG0YeB');
                         $text3 = new MultiMessageBuilder();
@@ -194,7 +197,51 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         ],
                     ]);
                     return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                }
 
+                else if($event['postback']['data'] == '1-1'){
+                    $res = $bot->getProfile($event['source']['userId']);
+
+                    if($res->isSucceeded()){
+                        $profile = $res->getJSONDecodedBody();
+                        $userId = $profile['userId'];
+                        $displayName = $profile['displayName'];
+                        $answer = $event['postback']['text'];
+    
+                        //retrieve user data into DB
+                        $psql = "INSERT INTO public.survey_answers(userid, displayName, answersurveyone) VALUES ('$userId','$displayName','$answer')";
+                        $ret = pg_query($db, $psql);
+    
+                        if($ret){
+                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami ^^");
+                            $result = $bot->replyMessage($event['replyToken'], $repMessage);
+        
+                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                        }
+                }
+
+                else if($event['postback']['data'] == '1-2'){
+                    
+                }
+
+                else if($event['postback']['data'] == '1-3'){
+                    
+                }
+
+                else if($event['postback']['data'] == '2-1'){
+                    
+                }
+
+                else if($event['postback']['data'] == '2-2'){
+                    
+                }
+
+                else if($event['postback']['data'] == '2-3'){
+                    
+                }
+
+                else if($event['postback']['data'] == '2-4'){
+                    
                 }
                 
                 else{

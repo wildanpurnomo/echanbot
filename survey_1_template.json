@@ -60,7 +60,7 @@
           "type": "postback",
           "label": "Taman Jogja Indah",
           "text": "Taman Jogja Indah",
-          "data": "Taman Jogja Indah"
+          "data": "1-1"
         }
       },
       {
@@ -71,7 +71,7 @@
           "type": "postback",
           "label": "Taman Indah Jogja",
           "text": "Taman Indah Jogja",
-          "data": "Taman Indah Jogja"
+          "data": "1-2"
         }
       },
       {
@@ -82,7 +82,7 @@
           "type": "postback",
           "label": "Jogja Taman Indah",
           "text": "Jogja Taman Indah",
-          "data": "Jogja Taman Indah"
+          "data": "1-3"
         }
       },
       {
