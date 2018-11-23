@@ -70,10 +70,14 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     $displayName = $profile['displayName'];
 
                     //retrieve user data into DB
-                    $psql = "INSERT INTO public.users_info(userid, displayName, timestamp) VALUES ('$userId','$displayName',CURRENT_TIMESTAMP)";
-                    $ret = pg_query($db, $psql);
+                    $psql1 = "UPDATE public.users_info SET userid = '$userId', displayname = '$displayName', timestamp=CURRENT_TIMESTAMP";
+                    //$psql1 = "INSERT INTO public.users_info(userid, displayName, timestamp) VALUES ('$userId','$displayName',CURRENT_TIMESTAMP)";
+                    $ret1 = pg_query($db, $psql);
 
-                    if($ret){
+                    $psql2 = "INSERT INTO public.survey_answer(userid, displayName) VALUES ('$userId','$displayName')";
+
+
+                    if($ret1){
                         //welcoming message
                         $message1 = new TextMessageBuilder("Halo " . $displayName . " ! Selamat datang di E-Chan!\n");
                         $image = new ImageMessageBuilder("https://image.ibb.co/dEkLFV/sasisu.png","https://image.ibb.co/dEkLFV/sasisu.png");
@@ -236,7 +240,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
     
                         if($ret){
                             $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
-                            $result = $bot->replyMessage($event['replyToken'], $repMessage);
+                            $result = $answer;
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                         }
