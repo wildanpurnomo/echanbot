@@ -1,0 +1,16 @@
+{
+    "name": "wildan/wildan-bot",
+    "description": "Simple line bot using php slim framework",
+    "type": "Project",
+    "require": {
+        "php": "^7.2",
+        "slim/slim": "^3.11",
+        "linecorp/line-bot-sdk": "^3.6"
+    },
+    "authors": [
+        {
+            "name": "wildan",
+            "email": "wildanfajar2017@mail.ugm.ac.id"
+        }
+    ]
+}
