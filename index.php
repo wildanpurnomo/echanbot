@@ -128,7 +128,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $text3->add($text2);
                         //$text3->add($templateMessage);
                         
-                        $result = $bot->replyMessage($event['replyToken'], $templateMessage);
+                        $result = $bot->replyMessage($event['replyToken'], $text3);
                         
                         return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                     }
