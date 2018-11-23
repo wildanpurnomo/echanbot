@@ -34,7 +34,7 @@
               "contents": [
                 {
                   "type": "text",
-                  "text": "Menurut Anda, berapa nilai yang cocok untuk menggambarkan tingkat kebersihan selokan mataram? 1 = sangat kurang, 6 = sangat bagus",
+                  "text": "Menurut Anda, berapa nilai yang cocok untuk menggambarkan tingkat kebersihan selokan mataram? 1 = sangat kurang, 4 = sangat bagus",
                   "wrap": true,
                   "color": "#666666",
                   "size": "sm",
@@ -90,26 +90,6 @@
             "type": "message",
             "label": "4",
             "text": "4"
-          }
-        },
-        {
-          "type": "button",
-          "style": "link",
-          "height": "sm",
-          "action": {
-            "type": "message",
-            "label": "5",
-            "text": "5"
-          }
-        },
-        {
-          "type": "button",
-          "style": "link",
-          "height": "sm",
-          "action": {
-            "type": "message",
-            "label": "6",
-            "text": "6"
           }
         },
         {
