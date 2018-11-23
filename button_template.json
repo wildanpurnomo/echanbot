@@ -1,0 +1,50 @@
+{
+    "type": "bubble",
+    "hero": {
+      "type": "image",
+      "url": "https://s.kaskus.id/images/2015/06/20/7853087_20150620063627.jpg",
+      "size": "full",
+      "aspectRatio": "4:3",
+      "aspectMode": "cover",
+      "action": {
+        "type": "uri",
+        "uri": "http://linecorp.com/"
+      }
+    },
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "text": "[SIKUN : Selokan Mataram]",
+          "weight": "bold",
+          "align": "center"
+        },
+        {
+          "type": "box",
+          "layout": "vertical",
+          "margin": "lg",
+          "spacing": "sm",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "baseline",
+              "spacing": "sm",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "Hai! Tahukah kamu tentang saluran Mataram? Saluran Mataram adalah kanal irigasi yang menghubungkan Kali Progo di barat dan Sungai Opak di timur. Selokan Mataram merupakan gagasan dari Sri Sultan Hamengkubuwono IX yang meminta pemerintah Jepang untuk membangun selokan yang akan mengairi areal persawahan di Yogyakarta. ",
+                  "wrap": true,
+                  "color": "#666666",
+                  "size": "sm",
+                  "flex": 1,
+                  "align": "center"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
