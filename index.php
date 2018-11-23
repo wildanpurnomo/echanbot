@@ -140,10 +140,10 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     else if (strtolower($event['message']['text'])=='su-kun'){
                         $carouselTemplateBuilder = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder([
                             new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Survey Nama Taman Baru", "Vote untuk nama taman baru!","https://travelyuk.files.wordpress.com/2010/06/butchard.jpg",[
-                            new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('Open Survey 1',"Open Survey 1","Open survey 1"),
+                            new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('Open Survey 1',"Open Survey 1","Open Survey 1"),
                             ]),
                             new \LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder("Survey Kebersihan Selokan Mataram", "Rate kebersihan Selokan Mataram!","https://s.kaskus.id/images/2015/06/20/7853087_20150620063627.jpg",[
-                            new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Open Survey 2','Open Survey 2','Open Survey 2'),
+                            new \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder('Open Survey 2',"Open Survey 2","Open Survey 2"),
                             ]),
                             ]);
                         $templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('Carousel Template',$carouselTemplateBuilder);
