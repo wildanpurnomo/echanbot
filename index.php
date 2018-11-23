@@ -132,11 +132,12 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                             new \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder('Buka',"http://hilite.me/"),
                             ]),
                             ]);
+                            $templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('Carousel Template',$carouselTemplateBuilder);
                         $text3 = new MultiMessageBuilder();
                         $text3->add($image);
                         $text3->add($text1);
                         $text3->add($text2);
-                        $text3->add($carouselTemplateBuilder);
+                        $text3->add($templateMessage);
                         
                         $result = $bot->replyMessage($event['replyToken'], $text3);
                         
