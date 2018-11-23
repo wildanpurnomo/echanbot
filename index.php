@@ -141,25 +141,6 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         
                         return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                     }
-
-                    else if(strtolower($event['message']['text']) == 'si-kun'){
-                        $buttonsTemplate = file_get_contents('button_template.json');
-
-                        $result = $httpClient->post(LINEBot::DEFAULT_ENDPOINT_BASE . '/v2/bot/message/reply', [
-                            'replyToken' => $event['replyToken'],
-                            'messages' => [
-                                [
-                                    "type" => "flex",
-                                    "altText" => "Test Flex Message",
-                                    "contents" => json_decode($buttonsTemplate)
-                                ]
-
-                            ],
-                        ]);
-
-                        return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
-                    }
-                    
                 }
             }
 
@@ -168,8 +149,25 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
             }
         }
     }
+});
 
+$app->get('/pushsikun', function($req, $res) use ($bot, $httpClient)
+{
+    $buttonsTemplate = file_get_contents('button_template.json');
 
+    $result = $httpClient->post(LINEBot::DEFAULT_ENDPOINT_BASE . '/v2/bot/message/reply', [
+        'replyToken' => $event['replyToken'],
+        'messages' => [
+            [
+                "type" => "flex",
+                "altText" => "Test Flex Message",
+                "contents" => json_decode($buttonsTemplate)
+            ]
+
+        ],
+    ]);
+
+    return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
 });
 
 $app->run();
