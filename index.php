@@ -70,7 +70,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     $displayName = $profile['displayName'];
 
                     //retrieve user data into DB
-                    $psql = "INSERT INTO public.users_info(userId, displayName, timestamp) VALUES ('$userId','$displayName',CURRENT_TIMESTAMP)";
+                    $psql = "INSERT INTO public.users_info(userid, displayName, timestamp) VALUES ('$userId','$displayName',CURRENT_TIMESTAMP)";
                     $ret = pg_query($db, $psql);
 
                     //welcoming message
