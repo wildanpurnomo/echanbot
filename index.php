@@ -204,7 +204,16 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
             }
 
             else if($event['type'] == 'unfollow'){
+                $res = $bot->getProfile($event['source']['userId']);
 
+                if($res->isSucceeded()){
+                    $profile = $res->getJSONDecodedBody();
+                    $userId = $profile['userId'];
+
+                    //retrieve user data into DB
+                    $psql = "DELETE FROM public.users_info WHERE userid = '$userId'";
+                    $ret = pg_query($db, $psql);
+                    }
             }
         }
     }
