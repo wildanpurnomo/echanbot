@@ -54,7 +54,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
     if(is_array($data['events'])){
         $host = "host = ec2-23-21-201-12.compute-1.amazonaws.com";
         $user = "user = bqgtvmqhgoocpi";
-        $password = "password = 94094cc3d5a2e480287f8f0a11fbc45e03685dae62b0da058f6dd44069be0bb8";
+        $password = "password = 2302bdf02990ee73a5a3f718a2b0ca280f65f27f62ef67e6b3850e05c1eceb37";
         $dbname = "dbname = df4d3civge3daf";
         $port = "port = 5432";
 
