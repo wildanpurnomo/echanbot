@@ -174,7 +174,14 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     }
 
                     else{
-                        $textMessage = new TextMessageBuilder("Halo! Bagaimana kabarmu? Jangan lupa untuk mengisi survey yang tersedia ya~");
+                        $listRepMessage = array(
+                            "Halo! Bagaimana kabarmu? Jangan lupa untuk mengisi survey yang tersedia ya~",
+                            "Apa kabar! Senang mendapatkan chat dari kamu juga ~ Jangan lupa coba fitur-fitur kami ~",
+                            "Semoga harimu menyenangkan! Mari kita selalu menjaga lingkungan sekitar."
+                        );
+                        
+                        $rand = rand(0,2);
+                        $textMessage = new TextMessageBuilder($listRepMessage[$rand]);
                         $stickerMessage = new StickerMessageBuilder(1,2);
 
                         $replyRandomMessage = new MultiMessageBuilder();
