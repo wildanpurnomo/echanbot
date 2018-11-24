@@ -120,7 +120,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                             $displayName = $profile['displayName'];
         
                             //retrieve user data into DB
-                            $psql = "INSERT INTO public.users_info(userid, displayname, suggestion, timestamp) VALUES ('$userId','$displayName','$saran',CURRENT_TIMESTAMP)";
+                            $psql = "INSERT INTO public.suggestion_box(userid, displayname, suggestion, timestamp) VALUES ('$userId','$displayName','$saran',CURRENT_TIMESTAMP)";
                             $ret = pg_query($db, $psql);
 
                             $textMessageBuilder = new TextMessageBuilder('Terima kasih atas masukan Anda');
