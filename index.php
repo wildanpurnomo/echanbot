@@ -114,19 +114,24 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         }
 
                         else{
-                            // $profile = $res->getJSONDecodedBody();
-                            $saran = substr($event['message']['text'], 7, strlen($event['message']['text'])-1);
-                            // $userId = $profile['userId'];
-                            // $displayName = $profile['displayName'];
-        
-                            //retrieve user data into DB
-                            // $psql = "INSERT INTO public.suggestion_box(userid, displayname, suggestion, timestamp) VALUES ('$userId','$displayName','$saran',CURRENT_TIMESTAMP)";
-                            // $ret = pg_query($db, $psql);
+                            $res = $bot->getProfile($event['source']['userId']);
+                            $profile = $res->getJSONDecodedBody();
 
-                            $textMessageBuilder = new TextMessageBuilder('Terima kasih atas masukan Anda' . $saran);
-                            $result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
-                      
-                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                            if($res){
+                                $saran = substr($event['message']['text'], 7, strlen($event['message']['text'])-1);
+                                $userId = $profile['userId'];
+                                $displayName = $profile['displayName'];
+            
+                                //retrieve user data into DB
+                                $psql = "INSERT INTO public.suggestion_box(userid, displayname, suggestion, timestamp) VALUES ('$userId','$displayName','$saran',CURRENT_TIMESTAMP)";
+                                $ret = pg_query($db, $psql);
+    
+                                $textMessageBuilder = new TextMessageBuilder('Terima kasih atas masukan Anda');
+                                $result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+                          
+                                return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                            }
+
                         }
                     }
 
