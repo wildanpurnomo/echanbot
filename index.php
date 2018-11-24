@@ -115,7 +115,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
 
                         else{
                             // $profile = $res->getJSONDecodedBody();
-                            // $saran = substr($event['message']['text'], 7, strlen($event['message']['text'])-1);
+                            $saran = substr($event['message']['text'], 7, strlen($event['message']['text'])-1);
                             // $userId = $profile['userId'];
                             // $displayName = $profile['displayName'];
         
