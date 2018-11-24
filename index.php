@@ -114,10 +114,10 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         }
 
                         else{
-                            $profile = $res->getJSONDecodedBody();
-                            $saran = substr($event['message']['text'], 7, strlen($event['message']['text'])-1);
-                            $userId = $profile['userId'];
-                            $displayName = $profile['displayName'];
+                            // $profile = $res->getJSONDecodedBody();
+                            // $saran = substr($event['message']['text'], 7, strlen($event['message']['text'])-1);
+                            // $userId = $profile['userId'];
+                            // $displayName = $profile['displayName'];
         
                             //retrieve user data into DB
                             // $psql = "INSERT INTO public.suggestion_box(userid, displayname, suggestion, timestamp) VALUES ('$userId','$displayName','$saran',CURRENT_TIMESTAMP)";
