@@ -234,7 +234,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         }
 
                         else{
-                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.");
+                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini. Silahkan update hasilnya di line://app/1622788685-KM2gG7p3");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
@@ -263,7 +263,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         }
 
                         else{
-                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.");
+                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini. Silahkan update hasilnya di line://app/1622788685-KM2gG7p3");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
@@ -293,7 +293,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         }
 
                         else{
-                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.");
+                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini. Silahkan update hasilnya di line://app/1622788685-KM2gG7p3");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
@@ -322,7 +322,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         }
 
                         else{
-                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.");
+                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.Silahkan update hasilnya di line://app/1622788685-qPVQyLg6");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
@@ -351,7 +351,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         }
 
                         else{
-                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.");
+                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.Silahkan update hasilnya di line://app/1622788685-qPVQyLg6");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
@@ -380,7 +380,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         }
 
                         else{
-                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.");
+                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.Silahkan update hasilnya di line://app/1622788685-qPVQyLg6");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
@@ -409,7 +409,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         }
 
                         else{
-                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.");
+                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.Silahkan update hasilnya di line://app/1622788685-qPVQyLg6");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
