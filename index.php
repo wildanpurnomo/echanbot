@@ -248,7 +248,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $ret = pg_query($db, $psql);
     
                         if($ret){
-                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
+                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami. Silahkan lihat hasilnya di line://app/1622788685-KM2gG7p3");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
@@ -277,7 +277,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $ret = pg_query($db, $psql);
     
                         if($ret){
-                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
+                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami. Silahkan lihat hasilnya di line://app/1622788685-KM2gG7p3");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
@@ -307,7 +307,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $ret = pg_query($db, $psql);
     
                         if($ret){
-                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
+                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami. Silahkan lihat hasilnya di line://app/1622788685-KM2gG7p3");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
