@@ -478,6 +478,7 @@ $app->get('/pushmessage', function($req, $res) use ($bot, $httpClient)
         
         //     return $res->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
         // }
+        echo "jos";
         return $res->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
 
     }
