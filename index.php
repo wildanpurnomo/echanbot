@@ -435,7 +435,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
     }
 });
 
-$app->get('/pushsikun', function($req, $res) use ($bot, $httpClient)
+$app->get('/pushmessage', function($req, $res) use ($bot, $httpClient)
 {
     $host = "host = ec2-23-21-201-12.compute-1.amazonaws.com";
     $user = "user = bqgtvmqhgoocpi";
