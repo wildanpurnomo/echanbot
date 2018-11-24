@@ -114,7 +114,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         }
 
                         else{
-                            $saran = substr($event['message']['text'], 8)
+                            $saran = substr($event['message']['text'], 8);
 
                             $textMessageBuilder = new TextMessageBuilder('Terima kasih atas masukan Anda');
                             $result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
