@@ -450,24 +450,36 @@ $app->get('/pushmessage', function($req, $res) use ($bot, $httpClient)
         $query = "SELECT userid FROM public.users_info";
 
         $ret = pg_query($db, $query);
-        
+        $res = $bot->getProfile("U68ae9130b71a5191a462ad1ea4664d31");
+        $result = $httpClient->post(LINEBot::DEFAULT_ENDPOINT_BASE . '/v2/bot/message/reply', [
+        'replyToken' => $event['replyToken'],
+        'messages'   => [
+            [
+               "type" => "flex",
+               "altText" => "Test Flex Message",
+               'contents' => json_decode($buttonsTemplate)
+            ]
+            ],
+        ]);
 
-        while($row = pg_fetch_assoc($ret)){
+        // while($row = pg_fetch_assoc($ret)){
 
-            $res = $bot->getProfile($row['userid']);
-            $result = $httpClient->post(LINEBot::DEFAULT_ENDPOINT_BASE . '/v2/bot/message/reply', [
-                'replyToken' => $event['replyToken'],
-                'messages'   => [
-                    [
-                        "type" => "flex",
-                        "altText" => "Test Flex Message",
-                        'contents' => json_decode($buttonsTemplate)
-                    ]
-                ],
-            ]);
+        //     $res = $bot->getProfile("U68ae9130b71a5191a462ad1ea4664d31");
+        //     $result = $httpClient->post(LINEBot::DEFAULT_ENDPOINT_BASE . '/v2/bot/message/reply', [
+        //         'replyToken' => $event['replyToken'],
+        //         'messages'   => [
+        //             [
+        //                 "type" => "flex",
+        //                 "altText" => "Test Flex Message",
+        //                 'contents' => json_decode($buttonsTemplate)
+        //             ]
+        //         ],
+        //     ]);
         
-            return $res->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
-        }
+        //     return $res->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+        // }
+        return $res->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+
     }
 });
 
