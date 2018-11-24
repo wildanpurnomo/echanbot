@@ -220,6 +220,13 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                         }
+
+                        else{
+                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.");
+                            $result = $bot->replyMessage($event['replyToken'], $repMessage);
+        
+                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                        }
                     }
                 }
 
@@ -242,6 +249,14 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                         }
+
+                        else{
+                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.");
+                            $result = $bot->replyMessage($event['replyToken'], $repMessage);
+        
+                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                        }
+                        
                     }
                 }
 
@@ -260,6 +275,13 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
     
                         if($ret){
                             $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
+                            $result = $bot->replyMessage($event['replyToken'], $repMessage);
+        
+                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                        }
+
+                        else{
+                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
@@ -286,6 +308,13 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                         }
+
+                        else{
+                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.");
+                            $result = $bot->replyMessage($event['replyToken'], $repMessage);
+        
+                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                        }
                     }
                 }
 
@@ -304,6 +333,13 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
     
                         if($ret){
                             $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
+                            $result = $bot->replyMessage($event['replyToken'], $repMessage);
+        
+                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                        }
+
+                        else{
+                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
@@ -330,6 +366,13 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                         }
+
+                        else{
+                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.");
+                            $result = $bot->replyMessage($event['replyToken'], $repMessage);
+        
+                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                        }
                     }
                 }
 
@@ -352,16 +395,16 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                         }
+
+                        else{
+                            $repMessage = new TextMessageBuilder("Anda telah mengisi survey ini.");
+                            $result = $bot->replyMessage($event['replyToken'], $repMessage);
+        
+                            return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                        }
                     }
                 }
                 
-                else{
-                    $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami ^^");
-                    $result = $bot->replyMessage($event['replyToken'], $repMessage);
-
-                    return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
-
-                }
             }
 
             else if($event['type'] == 'unfollow'){
