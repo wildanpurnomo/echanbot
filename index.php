@@ -75,13 +75,13 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
 
                     if($ret){
                         //welcoming message
-                        $message1 = new TextMessageBuilder("Halo " . $displayName . " ! Selamat datang di E-Chan!\n");
+                        $message1 = new TextMessageBuilder("Halo " . $displayName . " ! Selamat datang di E-Chan! E-Chan merupakan chatbot LINE yang mendekatkanmu sekaligus menyampaikan aspirasimu kepada pemerintah.\n");
                         $image = new ImageMessageBuilder("https://image.ibb.co/dEkLFV/sasisu.png","https://image.ibb.co/dEkLFV/sasisu.png");
                         $message2 = new TextMessageBuilder("Aku punya 3 fitur : Sa-kun untuk memberi saran, Su-kun untuk mengisi kuisioner dan Si-kun untuk memberikan informasi menarik");
 
                         $welcomingText = new MultiMessageBuilder();
-                        $welcomingText->add($message1);
                         $welcomingText->add($image);
+                        $welcomingText->add($message1);
                         $welcomingText->add($message2);
                     }
 
@@ -171,6 +171,20 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $result = $bot->replyMessage($event['replyToken'], $text3);
 
                         return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+                    }
+
+                    else{
+                        $textMessage = new TextMessageBuilder("Halo! Bagaimana kabarmu? Jangan lupa untuk mengisi survey yang tersedia ya~");
+                        $stickerMessage = new StickerMessageBuilder(1,2);
+
+                        $replyRandomMessage = new MultiMessageBuilder();
+                        $replyRandomMessage->add($textMessage);
+                        $replyRandomMessage->add($stickerMessage);
+
+                        $result = $bot->replyMessage($event['replyToken'], $replyRandomMessage);
+
+                        return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
+
                     }
                 
                 }
