@@ -71,7 +71,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
 
                     //retrieve user data into DB
                     $psql = "INSERT INTO public.users_info(userid, displayName, timestamp) VALUES ('$userId','$displayName',CURRENT_TIMESTAMP)";
-                    $ret = pg_query($db, $psql1);
+                    $ret = pg_query($db, $psql);
 
                     if($ret){
                         //welcoming message
@@ -114,7 +114,14 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         }
 
                         else{
+                            $profile = $res->getJSONDecodedBody();
                             $saran = substr($event['message']['text'], 8);
+                            $userId = $profile['userId'];
+                            $displayName = $profile['displayName'];
+        
+                            //retrieve user data into DB
+                            $psql = "INSERT INTO public.users_info(userid, displayname, suggestion, timestamp) VALUES ('$userId','$displayName','$saran',CURRENT_TIMESTAMP)";
+                            $ret = pg_query($db, $psql);
 
                             $textMessageBuilder = new TextMessageBuilder('Terima kasih atas masukan Anda');
                             $result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
@@ -154,7 +161,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $templateMessage = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder('Carousel Template',$carouselTemplateBuilder);
                         $text1 = new TextMessageBuilder('Untuk informasi lebih, buka  line://app/1622788685-PMKG0YeB');
                         $text3 = new MultiMessageBuilder();
-                        $text3->add($text1);
+                        //$text3->add($text1);
                         $text3->add($templateMessage);
                         $result = $bot->replyMessage($event['replyToken'], $text3);
 
@@ -414,7 +421,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                     $profile = $res->getJSONDecodedBody();
                     $userId = $profile['userId'];
 
-                    //retrieve user data into DB
+                    //delete user data from DB
                     $psql = "DELETE FROM public.users_info WHERE userid = '$userId'";
                     $ret = pg_query($db, $psql);
                 }
