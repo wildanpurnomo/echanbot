@@ -445,15 +445,15 @@ $app->get('/pushsikun', function($req, $res) use ($bot, $httpClient)
 
     $db = pg_connect("$host $port $dbname $user $password");
 
-    IF($db){
-        $buttonsTemplate = file_get_contents('tes.json');
+    if($db){
+        $buttonsTemplate = file_get_contents('survey_1_template.json');
         $query = "SELECT userid FROM public.users_info";
 
         $ret = pgquery($db, $query);
         
 
         while($row = pg_fetch_assoc($ret)){
-            
+
             $res = $bot->getProfile($row);
             $result = $httpClient->post(LINEBot::DEFAULT_ENDPOINT_BASE . '/v2/bot/message/reply', [
                 'replyToken' => $event['replyToken'],
