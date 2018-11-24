@@ -244,7 +244,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $profile = $res->getJSONDecodedBody();
                         $userId = $profile['userId'];
                         $displayName = $profile['displayName'];
-                        $answer = 'Taman Jogja Indah';
+                        $answer = 'Taman Indah Jogja';
     
                         //retrieve user answer into DB
                         $psql = "INSERT INTO public.survey_one_answers(userid,answersurveyone) VALUES ('$userId','$answer')";
