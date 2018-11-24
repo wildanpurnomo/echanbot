@@ -172,27 +172,6 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
 
                         return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
                     }
-
-                    else{
-                        $listRepMessage = array(
-                            "Halo! Bagaimana kabarmu? Jangan lupa untuk mengisi survey yang tersedia ya~",
-                            "Apa kabar! Senang mendapatkan chat dari kamu juga ~ Jangan lupa coba fitur-fitur kami ~",
-                            "Semoga harimu menyenangkan! Mari kita selalu menjaga lingkungan sekitar."
-                        );
-                        
-                        $rand = rand(0,2);
-                        $textMessage = new TextMessageBuilder($listRepMessage[$rand]);
-                        $stickerMessage = new StickerMessageBuilder(1,2);
-
-                        $replyRandomMessage = new MultiMessageBuilder();
-                        $replyRandomMessage->add($textMessage);
-                        $replyRandomMessage->add($stickerMessage);
-
-                        $result = $bot->replyMessage($event['replyToken'], $replyRandomMessage);
-
-                        return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
-
-                    }
                 
                 }
             }
@@ -336,7 +315,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $ret = pg_query($db, $psql);
     
                         if($ret){
-                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
+                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami. Silahkan lihat hasilnya di line://app/1622788685-qPVQyLg6");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
@@ -365,7 +344,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $ret = pg_query($db, $psql);
     
                         if($ret){
-                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
+                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami. Silahkan lihat hasilnya di line://app/1622788685-qPVQyLg6");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
@@ -394,7 +373,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $ret = pg_query($db, $psql);
     
                         if($ret){
-                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
+                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami. Silahkan lihat hasilnya di line://app/1622788685-qPVQyLg6");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
@@ -423,7 +402,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
                         $ret = pg_query($db, $psql);
     
                         if($ret){
-                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami");
+                            $repMessage = new TextMessageBuilder("Terima kasih atas partisipasinya. Pesan telah disimpan di database kami. Silahkan lihat hasilnya di line://app/1622788685-qPVQyLg6");
                             $result = $bot->replyMessage($event['replyToken'], $repMessage);
         
                             return $response->withJson($result->getJSONDecodedBody(), $result->getHTTPStatus());
