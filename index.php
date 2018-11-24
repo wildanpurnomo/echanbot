@@ -75,7 +75,7 @@ $app->post('/webhook', function ($request, $response) use ($bot, $pass_signature
 
                     if($ret){
                         //welcoming message
-                        $message1 = new TextMessageBuilder("Halo " . $displayName . " ! Selamat datang di E-Chan! E-Chan merupakan chatbot LINE yang mendekatkanmu sekaligus menyampaikan aspirasimu kepada pemerintah.\n");
+                        $message1 = new TextMessageBuilder("Halo " . $displayName . " ! Selamat datang di E-Chan! E-Chan merupakan chatbot LINE yang mendekatkanmu sekaligus menyampaikan aspirasimu kepada pemerintah.");
                         $image = new ImageMessageBuilder("https://image.ibb.co/dEkLFV/sasisu.png","https://image.ibb.co/dEkLFV/sasisu.png");
                         $message2 = new TextMessageBuilder("Aku punya 3 fitur : Sa-kun untuk memberi saran, Su-kun untuk mengisi kuisioner dan Si-kun untuk memberikan informasi menarik");
 
